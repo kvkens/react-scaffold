@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     devtool: 'cheap-module-eval-source-map',
@@ -12,14 +13,23 @@ module.exports = {
         filename: '[name].js',
         chunkFilename: '[name].bundle.js'
     },
+    devServer: {
+        proxy: {
+            '/api': {
+                target: 'https://cnodejs.org',
+                secure: false,
+                //pathRewrite: {'^/api' : ''}
+            }
+        }
+    },
     optimization: {
         splitChunks: {
             cacheGroups: {
-                vendor:{
+                vendor: {
                     test: /[\\/]node_modules[\\/]/,
                     name: 'vendors',
                     chunks: 'all'
-                }  
+                }
             }
         },
         runtimeChunk: 'single',
@@ -34,7 +44,14 @@ module.exports = {
             }
         }, {
             test: /\.css$/,
-            use: ['style-loader', 'css-loader']
+            use: [{
+                loader: MiniCssExtractPlugin.loader,
+                options: {
+                    // you can specify a publicPath here
+                    // by default it use publicPath in webpackOptions.output
+                    publicPath: './'
+                }
+            }, 'css-loader']
         }, {
             test: /\.(png|svg|jpg|gif)$/,
             use: ['file-loader']
@@ -45,6 +62,12 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(['dist']),
+        new MiniCssExtractPlugin({
+            // Options similar to the same options in webpackOptions.output
+            // both options are optional
+            filename: "[name].css",
+            //chunkFilename: "[id].css"
+        }),
         new HtmlWebPackPlugin({
             template: "./src/index.html",
             filename: "./index.html"
