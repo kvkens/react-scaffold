@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Input from "../presentational/Input";
-import _ from 'lodash';
+import {Button} from 'antd';
+// import 'antd/dist/antd.css';
 class FormContainer extends Component {
     constructor() {
         super();
@@ -10,15 +11,15 @@ class FormContainer extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
     componentDidMount(){
-        console.log(_.join(['Another', 'module', 'loaded!'], ' '));
+        console.log('did');
     }
     handleChange(event) {
         this.setState({ [event.target.id]: event.target.value });
     }
     render() {
         const { seo_title } = this.state;
+        //return (<Button type="primary">Button</Button>);
         return (
-            <form id="article-form">
                 <Input
                     text="SEO title"
                     label="seo_title"
@@ -27,7 +28,6 @@ class FormContainer extends Component {
                     value={seo_title}
                     handleChange={this.handleChange}
                 />
-            </form>
         );
     }
 }
