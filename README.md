@@ -8,6 +8,11 @@ React主要用于单页应用程序。
 - Babel 7.x
 - React 16.x
 
+## 开发
+- npm install
+- npm start
+- npm run build
+
 ## 特性
 
 
