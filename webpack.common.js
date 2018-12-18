@@ -1,15 +1,24 @@
+require("@babel/polyfill");
 const path = require('path');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     entry: {
-        app: "./src/index.js"
+        app: "./src/app.js"
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].js',
         chunkFilename: '[name].bundle.js'
+    },
+    resolve: {
+        extensions: ['.js', '.jsx'],
+        alias: {
+            components: path.resolve(__dirname, 'src/components/'),
+            static: path.resolve(__dirname, 'src/static/'),
+            utils: path.resolve(__dirname, 'src/utils/')
+        }
     },
     optimization: {
         splitChunks: {
@@ -31,10 +40,10 @@ module.exports = {
     },
     module: {
         rules: [{
-            test: /\.js$/,
+            test: /\.js[x]?$/,
             exclude: /node_modules/,
             use: {
-                loader: "babel-loader"
+                loader: 'babel-loader'
             }
         }, {
             test: /\.css$/,
@@ -46,10 +55,23 @@ module.exports = {
             }, 'css-loader']
         }, {
             test: /\.(png|svg|jpg|gif)$/,
-            use: ['file-loader']
+            use: [{
+                loader: 'url-loader',
+                options: {
+                    limit: 8192,
+                    name: '[name].[ext]',
+                    outputPath: 'images/'
+                }
+            }]
         }, {
             test: /\.(woff|woff2|eot|ttf|otf)$/,
-            use: ['file-loader']
+            use: [{
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]',
+                    outputPath: 'fonts/'
+                }
+            }]
         }]
     },
     plugins: [

@@ -1,0 +1,6 @@
+.hello {
+    border: 1px solid #ff0000;
+    border-radius: 2px;
+    display: flex;
+    background: url(~static/images/react.png);
+}

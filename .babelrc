@@ -5,10 +5,17 @@
     ],
     "plugins": [
         "dynamic-import-webpack",
+        "@babel/plugin-proposal-class-properties",
+        ["@babel/plugin-transform-runtime", {
+            "corejs": false,
+            "helpers": true,
+            "regenerator": true,
+            "useESModules": false
+        }],
         ["import", {
             "libraryName": "antd",
             "libraryDirectory": "es",
             "style": "css" // `style: true` 会加载 less 文件
-          }]
+        }]
     ]
 }
