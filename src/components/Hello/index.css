@@ -1,6 +1,11 @@
 .hello {
     border: 1px solid #ff0000;
     border-radius: 2px;
+    transform: scale(1);
     display: flex;
     background: url(~static/images/react.png);
+}
+
+::placeholder {
+    color: gray;
 }

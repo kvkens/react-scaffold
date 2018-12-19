@@ -52,7 +52,7 @@ module.exports = {
                 options: {
                     publicPath: './'
                 }
-            }, 'css-loader']
+            }, 'css-loader','postcss-loader']
         }, {
             test: /\.(png|svg|jpg|gif)$/,
             use: [{

@@ -19,4 +19,4 @@ React主要用于单页应用程序。
 ## 版本
 
 - 0.0.1 初始化工程
-- 0.0.2 排除dist等目录
+- 0.0.2 排除dist等目录、添加PostCss、autoprefixer
