@@ -6,7 +6,7 @@ import { getDate } from 'utils';
 import './index.css';
 import './index.less';
 
-class Hello extends Component {
+class Jay extends Component {
     constructor() {
         super();
         this.state = {
@@ -65,4 +65,4 @@ class Hello extends Component {
     }
 }
 
-export default Hello;
+export default Jay;

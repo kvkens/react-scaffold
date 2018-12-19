@@ -16,6 +16,7 @@ module.exports = {
         extensions: ['.js', '.jsx'],
         alias: {
             components: path.resolve(__dirname, 'src/components/'),
+            container: path.resolve(__dirname, 'src/container/'),
             static: path.resolve(__dirname, 'src/static/'),
             utils: path.resolve(__dirname, 'src/utils/')
         }
@@ -36,7 +37,7 @@ module.exports = {
                 }
             }
         },
-        runtimeChunk: 'single',
+        //runtimeChunk: 'single',
     },
     module: {
         rules: [{
@@ -46,13 +47,13 @@ module.exports = {
                 loader: 'babel-loader'
             }
         }, {
-            test: /\.css$/,
+            test: /\.(le|c)ss$/,
             use: [{
                 loader: MiniCssExtractPlugin.loader,
                 options: {
                     publicPath: './'
                 }
-            }, 'css-loader','postcss-loader']
+            }, 'css-loader', 'postcss-loader', 'less-loader']
         }, {
             test: /\.(png|svg|jpg|gif)$/,
             use: [{
