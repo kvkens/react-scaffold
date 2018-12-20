@@ -56,11 +56,10 @@
     "@babel/runtime": "^7.2.0",
     "antd": "^3.11.2",
     "axios": "^0.18.0",
-    "classname": "0.0.0",
     "classnames": "^2.2.6",
     "mirrorx": "^0.2.12",
     "prop-types": "^15.6.2",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3"
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
   }
 }
