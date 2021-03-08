@@ -54,7 +54,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
     "@babel/runtime": "^7.2.0",
-    "antd": "^3.11.6",
+    "antd": "^4.13.1",
     "axios": "^0.21.1",
     "classnames": "^2.2.6",
     "mirrorx": "^0.2.12",
